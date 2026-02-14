@@ -27,12 +27,15 @@ const App: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Initial Data Load (Mock)
+  // Initial Data Load
   useEffect(() => {
-    // NOTE: In a real app, load from local storage or DB
     const savedInventory = localStorage.getItem('bulliontrack_inventory');
     if (savedInventory) {
-      setInventory(JSON.parse(savedInventory));
+      try {
+        setInventory(JSON.parse(savedInventory));
+      } catch (e) {
+        console.error("Failed to parse inventory", e);
+      }
     }
   }, []);
 
@@ -50,7 +53,6 @@ const App: React.FC = () => {
   
   const handleAddItem = (item: InventoryItem) => {
     setInventory(prev => [...prev, item]);
-    // Clear old insight as data changed
     if (inventory.length > 0) setInsight(null); 
   };
 

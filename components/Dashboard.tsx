@@ -6,7 +6,6 @@ import { ArrowUpRight, TrendingUp, Coins, Scale } from 'lucide-react';
 
 interface DashboardProps {
   stats: PortfolioStats;
-  // prices: MarketPrices; // Removed unused prop
   currency: Currency;
   aiInsight: string | null;
   isLoadingInsight: boolean;
@@ -37,7 +36,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ stats, currency, aiInsight
           <p className="text-slate-500 text-sm mt-2">Values updated based on real-time spot prices</p>
         </div>
         
-        {/* Decorative background element */}
         <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-emerald-500/10 to-transparent pointer-events-none" />
       </div>
 
@@ -133,7 +131,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ stats, currency, aiInsight
             {isLoadingInsight ? 'Analyzing...' : 'Refresh Analysis'}
           </button>
         </div>
-        <div className="bg-slate-900/50 p-4 rounded-xl border border-indigo-500/20 text-indigo-100 text-sm leading-relaxed">
+        <div className="bg-slate-900/50 p-4 rounded-xl border border-indigo-500/20 text-indigo-100 text-sm leading-relaxed min-h-[60px] flex items-center">
           {aiInsight ? aiInsight : (
             <span className="text-slate-500 italic">Add items to your inventory to generate AI-powered insights regarding your wealth distribution and market position.</span>
           )}
